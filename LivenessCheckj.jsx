@@ -16,6 +16,7 @@ const CHALLENGE_META = {
 
 // Point this at wherever uvicorn is running
 const API_BASE = "http://localhost:8000";
+// const API_BASE = "https://testapi.fmbch.com";
 
 // ── stages ────────────────────────────────────────────────────────────────────
 // idle → preparing → challenge_1 → challenge_2 → processing → success | failure

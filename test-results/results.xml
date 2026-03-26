@@ -1,0 +1,181 @@
+<testsuites id="" name="" tests="27" failures="3" skipped="0" errors="0" time="162.58065">
+<testsuite name="accessibility.spec.ts" timestamp="2026-03-26T06:41:34.197Z" hostname="" tests="2" failures="0" skipped="0" time="5.579" errors="0">
+<testcase name="Accessibility › Begin verification button is keyboard-focusable" classname="accessibility.spec.ts" time="4.412">
+</testcase>
+<testcase name="Accessibility › card has visible text contrast (dark background + light text)" classname="accessibility.spec.ts" time="1.167">
+</testcase>
+</testsuite>
+<testsuite name="liveness-check.spec.ts" timestamp="2026-03-26T06:41:34.197Z" hostname="" tests="21" failures="2" skipped="0" time="137.954" errors="0">
+<testcase name="Starting a session › fetches challenges and shows preview after clicking Begin" classname="liveness-check.spec.ts" time="4.656">
+</testcase>
+<testcase name="Starting a session › shows GET READY overlay during prepare stage" classname="liveness-check.spec.ts" time="1.301">
+</testcase>
+<testcase name="Starting a session › shows error banner when server is unreachable" classname="liveness-check.spec.ts" time="1.033">
+</testcase>
+<testcase name="Starting a session › shows error banner on camera denial" classname="liveness-check.spec.ts" time="2.714">
+</testcase>
+<testcase name="Challenge recording › shows REC indicator while recording" classname="liveness-check.spec.ts" time="2.72">
+</testcase>
+<testcase name="Challenge recording › displays first challenge icon and label" classname="liveness-check.spec.ts" time="1.147">
+</testcase>
+<testcase name="Challenge recording › switches to second challenge after half duration" classname="liveness-check.spec.ts" time="0.735">
+</testcase>
+<testcase name="Challenge recording › shows Analysing spinner after recording stops" classname="liveness-check.spec.ts" time="7.645">
+</testcase>
+<testcase name="Success stage › shows Liveness confirmed message" classname="liveness-check.spec.ts" time="7.722">
+</testcase>
+<testcase name="Success stage › shows ✓ for each passed challenge" classname="liveness-check.spec.ts" time="12.833">
+<failure message="liveness-check.spec.ts:278:3 shows ✓ for each passed challenge" type="FAILURE">
+<![CDATA[  liveness-check.spec.ts:278:3 › Success stage › shows ✓ for each passed challenge ─────────────────
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('text=✓')
+    Expected: 3
+    Received: 4
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" with timeout 5000ms
+      - waiting for locator('text=✓')
+        9 × locator resolved to 4 elements
+          - unexpected value "4"
+
+
+      279 |     await reachSuccess(page, ["blink_twice", "smile"]);
+      280 |     const checks = page.locator("text=✓");
+    > 281 |     await expect(checks).toHaveCount(3); // header + 2 challenges
+          |                          ^
+      282 |   });
+      283 |
+      284 |   test("shows disabled Verified button", async ({ page }) => {
+        at C:\Users\MW50001056\Downloads\Transformation\testing\playwright-demo\tests\liveness-check.spec.ts:281:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\liveness-check-Success-sta-458bb-✓-for-each-passed-challenge\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\liveness-check-Success-sta-458bb-✓-for-each-passed-challenge\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|liveness-check-Success-sta-458bb-✓-for-each-passed-challenge\test-failed-1.png]]
+
+[[ATTACHMENT|liveness-check-Success-sta-458bb-✓-for-each-passed-challenge\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Success stage › shows disabled Verified button" classname="liveness-check.spec.ts" time="8.579">
+</testcase>
+<testcase name="Success stage › does NOT show Try again button on success" classname="liveness-check.spec.ts" time="8.03">
+</testcase>
+<testcase name="Failure stage › shows Verification failed message" classname="liveness-check.spec.ts" time="8.318">
+</testcase>
+<testcase name="Failure stage › shows failure detail strings for each challenge" classname="liveness-check.spec.ts" time="7.754">
+</testcase>
+<testcase name="Failure stage › shows Try again button" classname="liveness-check.spec.ts" time="7.765">
+</testcase>
+<testcase name="Failure stage › shows attempts counter after first failure" classname="liveness-check.spec.ts" time="8.008">
+</testcase>
+<testcase name="Failure stage › resets to idle when Try again is clicked" classname="liveness-check.spec.ts" time="7.772">
+</testcase>
+<testcase name="Retry flow › issues new challenges on retry" classname="liveness-check.spec.ts" time="8.154">
+</testcase>
+<testcase name="Retry flow › increments attempt counter across retries" classname="liveness-check.spec.ts" time="15.009">
+</testcase>
+<testcase name="Server error handling › shows error on 500 from verify endpoint" classname="liveness-check.spec.ts" time="7.816">
+<failure message="liveness-check.spec.ts:418:3 shows error on 500 from verify endpoint" type="FAILURE">
+<![CDATA[  liveness-check.spec.ts:418:3 › Server error handling › shows error on 500 from verify endpoint ───
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Verification failed')
+    Expected: visible
+    Error: strict mode violation: getByText('Verification failed') resolved to 2 elements:
+        1) <p>Verification failed</p> aka getByText('Verification failed', { exact: true })
+        2) <div>Verification failed: Server error 500: Internal S…</div> aka getByText('Verification failed: Server')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText('Verification failed')
+
+
+      429 |       timeout: 10000,
+      430 |     });
+    > 431 |     await expect(page.getByText("Verification failed")).toBeVisible();
+          |                                                         ^
+      432 |   });
+      433 |
+      434 |   test("shows error field from JSON error response", async ({ page }) => {
+        at C:\Users\MW50001056\Downloads\Transformation\testing\playwright-demo\tests\liveness-check.spec.ts:431:57
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\liveness-check-Server-erro-a703b-on-500-from-verify-endpoint\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\liveness-check-Server-erro-a703b-on-500-from-verify-endpoint\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|liveness-check-Server-erro-a703b-on-500-from-verify-endpoint\test-failed-1.png]]
+
+[[ATTACHMENT|liveness-check-Server-erro-a703b-on-500-from-verify-endpoint\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Server error handling › shows error field from JSON error response" classname="liveness-check.spec.ts" time="8.243">
+</testcase>
+</testsuite>
+<testsuite name="presence.spec.ts" timestamp="2026-03-26T06:41:34.197Z" hostname="" tests="4" failures="1" skipped="0" time="12.28" errors="0">
+<testcase name="Idle stage › renders title and subtitle" classname="presence.spec.ts" time="4.389">
+</testcase>
+<testcase name="Idle stage › shows Begin verification button" classname="presence.spec.ts" time="1.138">
+</testcase>
+<testcase name="Idle stage › shows face-outline SVG placeholder" classname="presence.spec.ts" time="0.966">
+</testcase>
+<testcase name="Idle stage › does NOT show challenge preview before session is loaded" classname="presence.spec.ts" time="5.787">
+<failure message="presence.spec.ts:28:3 does NOT show challenge preview before session is loaded" type="FAILURE">
+<![CDATA[  presence.spec.ts:28:3 › Idle stage › does NOT show challenge preview before session is loaded ────
+
+    Error: expect(locator).not.toBeVisible() failed
+
+    Locator:  getByText('You will be asked to:')
+    Expected: not visible
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "not toBeVisible" with timeout 5000ms
+      - waiting for getByText('You will be asked to:')
+        8 × locator resolved to <div>You will be asked to:</div>
+          - unexpected value "visible"
+
+
+      32 |     // The preview section only appears after challenges are fetched, so
+      33 |     // "You will be asked to:" should be absent initially.
+    > 34 |     await expect(page.getByText("You will be asked to:")).not.toBeVisible();
+         |                                                               ^
+      35 |   });
+      36 | });
+      37 |
+        at C:\Users\MW50001056\Downloads\Transformation\testing\playwright-demo\tests\presence.spec.ts:34:63
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\presence-Idle-stage-does-N-c654c-ew-before-session-is-loaded\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\presence-Idle-stage-does-N-c654c-ew-before-session-is-loaded\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|presence-Idle-stage-does-N-c654c-ew-before-session-is-loaded\test-failed-1.png]]
+
+[[ATTACHMENT|presence-Idle-stage-does-N-c654c-ew-before-session-is-loaded\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
