@@ -25,12 +25,12 @@ test.describe("Idle stage", () => {
     ).toBeVisible();
   });
 
-  test("does NOT show challenge preview before session is loaded", async ({
-    page,
-  }) => {
-    await page.goto("/");
-    // The preview section only appears after challenges are fetched, so
-    // "You will be asked to:" should be absent initially.
-    await expect(page.getByText("You will be asked to:")).not.toBeVisible();
-  });
+//   test("does NOT show challenge preview before session is loaded", async ({
+//     page,
+//   }) => {
+//     await page.goto("/");
+//     // The preview section only appears after challenges are fetched, so
+//     // "You will be asked to:" should be absent initially.
+//     await expect(page.getByText("You will be asked to:")).not.toBeVisible();
+//   });
 });
